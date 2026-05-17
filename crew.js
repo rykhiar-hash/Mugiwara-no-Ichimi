@@ -10,11 +10,12 @@ const crew = [
     accent: "#f5c842",
     bg: "#2a2410",
     img: "images/luffy.jpg",
+    wanted: "images/wanted-luffy.jpg",
     bounty: "3.000.000.000",
     ability: "Gomu Gomu no Mi (Nika)",
     origin: "Foosha Village, East Blue",
     desc: "Kapten Bajak Laut Topi Jerami yang bermimpi menjadi Raja Bajak Laut.",
-    imgPos: "center-top",
+    imgPos: "center top",
   },
   {
     name: "Roronoa Zoro",
@@ -23,6 +24,7 @@ const crew = [
     accent: "#22c55e",
     bg: "#0f2016",
     img: "images/zoro.jpg",
+    wanted: "images/wanted-zoro.jpg",
     bounty: "1.111.000.000",
     ability: "Santoryu (Tiga Pedang)",
     origin: "Shimotsuki Village, East Blue",
@@ -36,6 +38,7 @@ const crew = [
     accent: "#f97316",
     bg: "#2a1a0a",
     img: "images/nami.jpg",
+    wanted: "images/wanted-nami.jpg",
     bounty: "366.000.000",
     ability: "Clima-Tact (Manipulasi Cuaca)",
     origin: "Cocoyasi Village, East Blue",
@@ -49,6 +52,7 @@ const crew = [
     accent: "#84cc16",
     bg: "#1a2010",
     img: "images/usupp.jpg",
+    wanted: "images/wanted-usopp.jpg",
     bounty: "500.000.000",
     ability: "Slingshot & Amunisi Tanaman",
     origin: "Syrup Village, East Blue",
@@ -62,6 +66,7 @@ const crew = [
     accent: "#fbbf24",
     bg: "#252010",
     img: "images/sanji.jpg",
+    wanted: "images/wanted-sanji.jpg",
     bounty: "1.032.000.000",
     ability: "Black Leg Style & Ifrit Jambe",
     origin: "North Blue",
@@ -75,6 +80,7 @@ const crew = [
     accent: "#ec4899",
     bg: "#25101a",
     img: "images/chopper.jpg",
+    wanted: "images/wanted-chopper.jpg",
     bounty: "1.000",
     ability: "Hito Hito no Mi (Tujuh Titik)",
     origin: "Drum Island, Grand Line",
@@ -88,11 +94,12 @@ const crew = [
     accent: "#a855f7",
     bg: "#1a1025",
     img: "images/robin.jpg",
+    wanted: "images/wanted-robin.jpg",
     imgPos: "center top",
     bounty: "930.000.000",
     ability: "Hana Hana no Mi (Bunga)",
     origin: "Ohara, West Blue",
-    desc: "Arkeolog misterius yang satu-satunya bisa membaca Poneglyph." 
+    desc: "Arkeolog misterius yang satu-satunya bisa membaca Poneglyph.",
   },
   {
     name: "Franky",
@@ -101,13 +108,13 @@ const crew = [
     accent: "#3b82f6",
     bg: "#101525",
     img: "images/franky.jpg",
+    wanted: "images/wanted-franky.jpg",
     imgPos: "center 20%",
     imgScale: 0.4,
     bounty: "394.000.000",
     ability: "Cyborg & Franky Shogun",
     origin: "South Blue",
-    desc: "Tukang kapal cyborg yang membangun Thousand Sunny dengan tangan sendiri."
-    
+    desc: "Tukang kapal cyborg yang membangun Thousand Sunny dengan tangan sendiri.",
   },
   {
     name: "Brook",
@@ -116,14 +123,13 @@ const crew = [
     accent: "#94a3b8",
     bg: "#181818",
     img: "images/brook.jpg",
+    wanted: "images/wanted-brook.jpg",
     imgPos: "center top",
     bounty: "383.000.000",
     ability: "Yomi Yomi no Mi (Jiwa)",
     origin: "West Blue",
-    desc: "Musisi tengkorak yang bisa memisahkan jiwa dari tubuh dan membekukan lawan."
-    
+    desc: "Musisi tengkorak yang bisa memisahkan jiwa dari tubuh dan membekukan lawan.",
   },
-
   {
     name: "Jinbe",
     role: "Juru Mudi",
@@ -131,14 +137,15 @@ const crew = [
     accent: "#06b6d4",
     bg: "#081a20",
     img: "images/jinbe.jpg",
+    wanted: "images/wanted-jinbe.jpg",
     imgPos: "center top",
     bounty: "1.100.000.000",
     ability: "Fishman Karate & Judo",
     origin: "Fishman Island",
-    desc: "Juru mudi mantan Warlord yang menguasai seni bela diri manusia ikan."
+    desc: "Juru mudi mantan Warlord yang menguasai seni bela diri manusia ikan.",
   },
 ];
- 
+
 // ─────────────────────────────────────────
 //  FALLBACK SVG AVATAR (jika gambar gagal)
 // ─────────────────────────────────────────
@@ -190,7 +197,7 @@ function makeCard(member) {
         class="card-img"
         src="${member.img}"
         alt="${member.name}"
-        style="object-position: ${member.imgPos || 'center top'}; 
+        style="object-position: ${member.imgPos || 'center top'};"
         onerror="this.src='${fallbackSVG(member.name)}'"
       />
     </div>
@@ -200,6 +207,7 @@ function makeCard(member) {
       <span class="card-badge">${member.badge}</span>
     </div>
   `;
+
   card.addEventListener('click', () => window.openModal(member));
   return card;
 }
@@ -212,16 +220,48 @@ function initTrack() {
   if (!track) return;
   [...crew, ...crew].forEach(member => track.appendChild(makeCard(member)));
 }
- 
+
+// ─────────────────────────────────────────
+//  BOUNTY LEADERBOARD
+// ─────────────────────────────────────────
+function initBounty() {
+  const list = document.getElementById('bountyList');
+  if (!list) return;
+
+  const sorted = [...crew].sort((a, b) => {
+    const toNum = str => parseInt(str.replace(/\./g, '')) || 0;
+    return toNum(b.bounty) - toNum(a.bounty);
+  });
+
+  sorted.forEach((member, index) => {
+    const card = document.createElement('div');
+    card.className = 'bounty-card';
+    card.innerHTML = `
+      <span class="bounty-rank">#${index + 1}</span>
+      <div class="bounty-img-wrap">
+        <img class="bounty-img"
+          src="${member.wanted || member.img}"
+          alt="${member.name}"
+          style="object-position: ${member.imgPos || 'center top'};"
+          onerror="this.src='${fallbackSVG(member.name)}'"
+        />
+      </div>
+    `;
+    card.addEventListener('click', () => window.openModal(member));
+    list.appendChild(card);
+  });
+}
+
 // ─────────────────────────────────────────
 //  MODAL LOGIC
 // ─────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
   initTrack();
- 
+  initBounty();
+
   const overlay = document.getElementById('modalOverlay');
   const modalClose = document.getElementById('modalClose');
- 
+
   window.openModal = function(member) {
     document.getElementById('modalImg').src = member.img;
     document.getElementById('modalImg').style.objectPosition = member.imgPos || 'center top';
@@ -239,18 +279,18 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
- 
+
   window.closeModal = function() {
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   };
- 
+
   overlay.addEventListener('click', (e) => {
     if (e.target === overlay) closeModal();
   });
- 
+
   modalClose.addEventListener('click', closeModal);
- 
+
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
