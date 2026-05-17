@@ -637,3 +637,33 @@ body {
 .bounty-card:hover .bounty-img {
   filter: sepia(0%);
 }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE MOBILE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 0 2rem;
+  }
+
+  .crew-card {
+    width: 140px;
+  }
+
+  .card-img-wrap {
+    height: 170px;
+  }
+
+  .bounty-list {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .bounty-section {
+    padding: 3rem 1rem;
+  }
+
+  .bounty-header {
+    margin-bottom: 2rem;
+  }
+}
