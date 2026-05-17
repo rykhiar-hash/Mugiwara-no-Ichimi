@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Topi Jerami — Straw Hat Pirates</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-bg" id="heroBg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">☠ Bajak Laut Topi Jerami ☠</p>
+            <h1 class="hero-title">Aku akan<br>jadi Raja<br>Bajak Laut!</h1>
+            <p class="hero-quote">— Monkey D. Luffy</p>
+            <a class="hero-btn" href="#crew">Kenali Nakama</a>
+        </div>
+    </section>
+
+    <section class="op-section id=crew">
+        <div class="op-header">
+          <h1 class="op-title">☠ Topi Jerami ☠</h1>
+          <p class="op-subtitle">Straw Hat Pirates</p>
+            <div class="op-divider">
+              <span class="op-anchor">⚓</span>
+            </div>
+        </div>
+
+        <div class="track-wrapper">
+        <div class="track" id="track">
+        </div>
+        </div>
+
+        <p class="op-footer">⁕ &nbsp; 10 Nakama &nbsp; ⁕ &nbsp; Thousand Sunny &nbsp; ⁕</p>
+    </section>
+
+  <!-- Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-box" id="modalBox">
+        <button class="modal-close" id="modalClose">✕</button>
+        <div class="modal-img-wrap" id="modalImgWrap">
+        <img class="modal-img" id="modalImg" src="" alt="" />
+    </div>
+    <div class="modal-content">
+        <span class="modal-badge" id="modalBadge"></span>
+        <h2 class="modal-name" id="modalName"></h2>
+        <p class="modal-role" id="modalRole"></p>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-stats">
+        <div class="modal-stat">
+        <span class="stat-label">Bounty</span>
+        <span class="stat-value" id="modalBounty"></span>
+    </div>
+    <div class="modal-stat">
+        <span class="stat-label">Ability</span>
+        <span class="stat-value" id="modalAbility"></span>
+    </div>
+    <div class="modal-stat">
+        <span class="stat-label">Origin</span>
+        <span class="stat-value" id="modalOrigin"></span>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+  <script src="crew.js"></script>
+</body>
+</html>

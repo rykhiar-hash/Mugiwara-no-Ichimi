@@ -1,0 +1,533 @@
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=Crimson+Pro:wght@400;600&display=swap');
+
+/* ─────────────────────────────────────────
+   RESET & BASE
+───────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #1e1e1e;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─────────────────────────────────────────
+   HERO SECTION
+───────────────────────────────────────── */
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('images/luffy-hero.jpeg') center top / cover no-repeat;
+  transform: scale(1.1);
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  background: linear-gradient(to bottom, transparent, #1e1e1e);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 5rem;
+  max-width: 600px;
+}
+
+.hero-eyebrow {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.8rem;
+  color: rgba(245, 200, 66, 0.7);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title {
+  font-family: 'Pirata One', cursive;
+  font-size: clamp(3rem, 8vw, 6rem);
+  color: #f0e8cc;
+  line-height: 1.05;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+}
+
+.hero-quote {
+  font-family: 'Crimson Pro', serif;
+  font-size: 1rem;
+  color: rgba(245, 200, 66, 0.6);
+  letter-spacing: 2px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #1e1e1e;
+  background: #f5c842;
+  padding: 0.75rem 2rem;
+  border-radius: 40px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.hero-btn:hover {
+  background: #f0e8cc;
+  transform: translateY(-2px);
+}
+
+/* ─────────────────────────────────────────
+   SECTION WRAPPER
+───────────────────────────────────────── */
+.op-section {
+  background: #1e1e1e;
+  padding: 3rem 0 2rem;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* subtle dot pattern overlay */
+.op-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ─────────────────────────────────────────
+   HEADER
+───────────────────────────────────────── */
+.op-header {
+  text-align: center;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.op-title {
+  font-family: 'Pirata One', cursive;
+  font-size: 2.2rem;
+  color: #f5c842;
+  text-shadow: 0 0 40px rgba(245, 200, 66, 0.35);
+  margin-bottom: 0.3rem;
+  letter-spacing: 2px;
+}
+
+.op-subtitle {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 1.8rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+/* ─────────────────────────────────────────
+   DIVIDER
+───────────────────────────────────────── */
+.op-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 2.2rem;
+}
+
+.op-divider::before {
+  background: linear-gradient(90deg, transparent, rgba(245, 200, 66, 0.5));
+}
+
+.op-divider::after {
+  background: linear-gradient(90deg, rgba(245, 200, 66, 0.5), transparent);
+}
+
+.op-divider::before,
+.op-divider::after {
+  content: '';
+  height: 1px;
+  width: 100px;
+}
+
+.op-anchor {
+  font-family: 'Pirata One', cursive;
+  font-size: 1rem;
+  color: rgba(245, 200, 66, 0.6);
+}
+
+/* ─────────────────────────────────────────
+   SCROLL TRACK
+───────────────────────────────────────── */
+.track-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.track-wrapper::before {
+  left: 0;
+  background: linear-gradient(to right, #1e1e1e, transparent);
+}
+
+.track-wrapper::after {
+  right: 0;
+  background: linear-gradient(to left, #1e1e1e, transparent);
+}
+
+.track-wrapper::before,
+.track-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.track {
+  display: flex;
+  gap: 18px;
+  padding: 16px 60px 20px;
+  width: max-content;
+  animation: scrollLeft 40s linear infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
+.track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────
+   CREW CARD
+───────────────────────────────────────── */
+.crew-card {
+  width: 190px;
+  flex-shrink: 0;
+  background: #252525;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* garis warna bawah card per karakter */
+.crew-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--accent);
+  opacity: 0.75;
+}
+
+.crew-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.6),
+    0 0 24px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+/* ─────────────────────────────────────────
+   CARD IMAGE
+───────────────────────────────────────── */
+.card-img-wrap {
+  width: 100%;
+  height: 225px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #252525;
+}
+
+/* gradient fade bawah biar nyambung ke card body */
+.card-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to top, #252525 30%, transparent);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.4s ease;
+}
+
+.crew-card:hover .card-img {
+  transform: scale(1.07) translateY(-4px);
+}
+
+/* ─────────────────────────────────────────
+   CARD BODY
+───────────────────────────────────────── */
+.card-body {
+  padding: 0.6rem 0.9rem 0.9rem;
+  text-align: center;
+}
+
+.card-name {
+  font-family: 'Pirata One', cursive;
+  font-size: 0.92rem;
+  color: #f0e8cc;
+  margin-bottom: 3px;
+  line-height: 1.2;
+  letter-spacing: 0.3px;
+}
+
+.card-role {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.38);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.card-badge {
+  display: inline-block;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.63rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+}
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+.op-footer {
+  text-align: center;
+  margin-top: 2rem;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* ─────────────────────────────────────────
+   MODAL
+───────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-box {
+  background: #252525;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 420px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transform: translateY(20px);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-box {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: #fff;
+  font-size: 0.85rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.modal-close:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-img-wrap {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+}
+
+.modal-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: linear-gradient(to top, #252525, transparent);
+}
+
+.modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.modal-content {
+  padding: 1rem 1.4rem 1.4rem;
+}
+
+.modal-badge {
+  display: inline-block;
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.63rem;
+  padding: 2px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--modal-accent);
+  color: var(--modal-accent);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.modal-name {
+  font-family: 'Pirata One', cursive;
+  font-size: 1.5rem;
+  color: #f0e8cc;
+  margin-bottom: 0.2rem;
+}
+
+.modal-role {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.35);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+
+.modal-desc {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.6;
+  margin-bottom: 1.1rem;
+}
+
+.modal-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 1rem;
+}
+
+.modal-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.stat-value {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.9rem;
+  color: var(--modal-accent);
+}
